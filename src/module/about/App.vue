@@ -1,5 +1,7 @@
 <template>
-    <h1>This is Foot!</h1>
+    <div id="body">
+        <h1>This is Foot!</h1>
+    </div>
 </template>
 
 <script>
@@ -8,6 +10,7 @@ export default {
 
     }
 }
+
 </script>
 
 <style>
