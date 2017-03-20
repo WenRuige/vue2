@@ -16,7 +16,7 @@ module.exports = {
     entry: util.getEntries('./src/module/**/*.js'),
     output: {
         path: __dirname + '/dist',
-        //不能存放变量?
+        //不能存放变量?可更改静态文件的存储路径
         //publicPath: '/name.html',
         filename: '[name].[hash:5].js'
     },
@@ -42,32 +42,30 @@ module.exports = {
                 test: /\.css$/,
                 use: ['css-loader'],
             },
-            {
-                test: /\.html$/,
-                use: ['html-loader'],
-            },
         ]
     },
     plugins: [
         //有可能因为webpack版本不兼容导致缺失问题
         new HtmlWebpackPlugin({
             inject: true,
-            title: 'this is a title test',
+            title: 'this is about title',
             //加上一个hash值,防缓存
             hash: true,
             chunks: ['about'],
-            //公共模板文件
-            template: './template.html',
+            //公共模板文件  TODO:此处如果使用公共模板的话需要引入webpack公共的方法
+            template: './template.ejs',
+            //生成文件的名称
             filename: '../src/module/about/about.html'
         }),
         new HtmlWebpackPlugin({
             inject: true,
-            title: 'this is a title test',
+            title: 'this is index title',
             //加上一个hash值,防缓存
             hash: true,
             chunks: ['index'],
             //公共模板文件
-            template: './template.html',
+            template: './template.ejs',
+            //生成文件的名称
             filename: '../src/module/index/index.html'
         }),
     ]
