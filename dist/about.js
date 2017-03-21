@@ -65,20 +65,30 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = {
-   data() {
-      return {
-         msg: 'qq',
-         text: '',
-         object: ['Do the dishes', 'Take out the trash', 'Mow the lawn']
-      };
-   }, methods: {
-      add: function () {
-         this.object.push(this.text);
-         this.text = '';
-      }
-   }
+    data() {
+        return {
+            text: '',
+            activeClass: 'finished',
+            errorClass: 'finished_error',
+            object: [{ text: 'coding', "isFinished": false }]
+
+        };
+    }, methods: {
+        add: function () {
+            this.object.push({ text: this.text, "isFinished": false });
+            this.text = '';
+        }, del: function (item) {
+            this.object.splice(item, 1);
+            //将事件置为完成
+        }, finish: function (item) {
+            console.log(item);
+            item.isFinished = false;
+            console.log(item);
+        }
+    }
 };
 
 /***/ }),
@@ -123,7 +133,7 @@ exports = module.exports = __webpack_require__(2)(undefined);
 
 
 // module
-exports.push([module.i, "\nh1[data-v-f5d7aeb0]{\n\tcolor: rgb(5, 110, 234);\n}\n\n\n\n\n", ""]);
+exports.push([module.i, "\n.finished[data-v-f5d7aeb0]{\n  text-decoration:underline;\n  color:red\n}\n#app[data-v-f5d7aeb0] {\n  font-family: 'Avenir', Helvetica, Arial, sans-serif;\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;\n  text-align: center;\n  color: #2c3e50;\n  margin-top: 60px;\n}\n\n", ""]);
 
 // exports
 
@@ -217,7 +227,18 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "id": "repeat-object"
     }
   }, _vm._l((_vm.object), function(value) {
-    return _c('li', [_vm._v("\n            " + _vm._s(value) + "\n        ")])
+    return _c('li', [_c('span', {
+      class: [value.isFinished ? _vm.activeClass : '', _vm.errorClass],
+      on: {
+        "click": _vm.finish
+      }
+    }, [_vm._v(_vm._s(value.text))]), _vm._v(" "), _c('button', {
+      on: {
+        "click": function($event) {
+          _vm.del(value)
+        }
+      }
+    }, [_vm._v("X")])])
   }))])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
