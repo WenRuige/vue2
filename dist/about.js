@@ -71,8 +71,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     data() {
         return {
             text: '',
-            activeClass: 'finished',
-            errorClass: 'finished_error',
             object: [{ text: 'coding', "isFinished": false }]
 
         };
@@ -81,6 +79,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.object.push({ text: this.text, "isFinished": false });
             this.text = '';
         }, del: function (item) {
+            console.log(item);
             this.object.splice(item, 1);
             //将事件置为完成
         }, finish: function (item) {
@@ -228,7 +227,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, _vm._l((_vm.object), function(value) {
     return _c('li', [_c('span', {
-      class: [value.isFinished ? _vm.activeClass : '', _vm.errorClass],
+      class: {
+        finished: value.isFinished
+      },
       on: {
         "click": _vm.finish
       }
@@ -238,7 +239,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
           _vm.del(value)
         }
       }
-    }, [_vm._v("X")])])
+    }, [_vm._v("关闭")])])
   }))])
 },staticRenderFns: []}
 module.exports.render._withStripped = true

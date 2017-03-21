@@ -4,8 +4,8 @@
         <input v-model="text" v-on:keyup.enter="add" placeholder="Add a todo">
         <ul id="repeat-object" class="demo">
             <li v-for="value in object">
-                <span v-on:click="finish" v-bind:class="[value.isFinished?activeClass : '', errorClass]">{{ value.text }}</span>
-                <button v-on:click="del(value)">X</button>
+                <span v-on:click="finish" v-bind:class="{finished:value.isFinished}">{{ value.text }}</span>
+                <button v-on:click="del(value)">close</button>
             </li>
         </ul>
     </div>
@@ -16,8 +16,6 @@
        data() {
          return {
          text:'',
-         activeClass: 'finished',
-         errorClass: 'finished_error',
          object:[
          { text:'coding',"isFinished":false}
          ]
@@ -28,6 +26,7 @@
                this.object.push({text:this.text,"isFinished":false })
                this.text = ''
             },del:function(item){
+                console.log(item)
                 this.object.splice(item,1);
                 //将事件置为完成
             },finish:function(item){
