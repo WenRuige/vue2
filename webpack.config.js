@@ -11,22 +11,29 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 
 module.exports = {
-    //入口文件
-    devtool: 'eval-source-map',
+    //防止打包文件过大
+    // externals:{
+    //     'vue':'window.vue'
+    // },
+    // 使用sourcemap的话 300kB -> 1.1 Mb
+    //devtool: 'eval-source-map',
     entry: util.getEntries('./src/module/**/*.js'),
     output: {
         path: __dirname + '/dist',
         //不能存放变量?可更改静态文件的存储路径
         //publicPath: '/name.html',
-        filename: '[name].[hash:5].js'
+        //filename: '[name].[hash:5].js' hash 表示对文件进行hash化
+        filename: '[name].js'
     },
+    //定义解析模块时路径的配置
     resolve: {
         extensions: ['.js', '.vue', '.json'],
+        //创建别名
         alias: {
             'src': path.resolve(__dirname, '../src'),
             'assets': path.resolve(__dirname, '../src/assets'),
             'components': path.resolve(__dirname, '../src/components'),
-            //引入common js
+            //引入vue.common js
             'vue$': 'vue/dist/vue.common.js'
 
         }
@@ -36,13 +43,21 @@ module.exports = {
         rules: [
             {
                 test: /\.vue$/,
-                loader: 'vue-loader'
+                use: ['vue-loader']
             },
             {
                 test: /\.css$/,
                 use: ['css-loader'],
             },
+            {
+                test: /\.js/,
+                use: ['babel-loader'],
+                exclude: '/node_modules/'
+            },
+
         ]
+
+
     },
     plugins: [
         //有可能因为webpack版本不兼容导致缺失问题
@@ -51,7 +66,7 @@ module.exports = {
             title: 'this is about title',
             //加上一个hash值,防缓存
             hash: true,
-            chunks: ['about'],
+            chunks: ['about', 'common'],
             //公共模板文件  TODO:此处如果使用公共模板的话需要引入webpack公共的方法
             template: './template.ejs',
             //生成文件的名称
@@ -62,12 +77,18 @@ module.exports = {
             title: 'this is index title',
             //加上一个hash值,防缓存
             hash: true,
-            chunks: ['index'],
+            chunks: ['index', 'common'],
             //公共模板文件
             template: './template.ejs',
             //生成文件的名称
             filename: '../src/module/index/index.html'
         }),
+        //公共类库单独打包
+        new webpack.optimize.CommonsChunkPlugin('common'),
+        //打包代码
+       // new webpack.optimize.UglifyJsPlugin(),
+        //增加copyRight
+        new webpack.BannerPlugin("gewenrui's webpack"),
     ]
 }
 

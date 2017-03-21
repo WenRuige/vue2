@@ -1,11 +1,12 @@
 <template>
-    <div>123</div>
+    <common></common>
 </template>
 
 <script>
+import common from '../../components/common/common'
 export default {
 	components: {
-
+       common
     }
 }
 </script>
