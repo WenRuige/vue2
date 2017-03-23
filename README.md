@@ -1,1 +1,1 @@
-# vue2
+##### webpack2 hot-reload

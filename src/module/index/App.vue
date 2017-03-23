@@ -1,12 +1,14 @@
 <template>
-    <common></common>
+    <div><!--将当前布局分成三部分-->
+    <resume></resume>
+    </div>
 </template>
 
 <script>
-import common from '../../components/common/common'
+import resume from '../../components/resume/resume'
 export default {
 	components: {
-       common
+        resume
     }
 }
 </script>

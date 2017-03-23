@@ -1,11 +1,9 @@
 <template>
-    <h1>This is Common Components</h1>
+    <h1>这里是公共组件部分</h1>
 </template>
 
 <script></script>
 
 <style scoped>
-	h1{
-		color: rgb(5, 110, 234);
-	}
+
 </style>

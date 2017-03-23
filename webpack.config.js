@@ -56,8 +56,6 @@ module.exports = {
             },
 
         ]
-
-
     },
     plugins: [
         //有可能因为webpack版本不兼容导致缺失问题
