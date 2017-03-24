@@ -20,18 +20,19 @@ module.exports = {
     entry: util.getEntries('./src/module/**/*.js'),
     output: {
         path: __dirname + '/dist',
-        //不能存放变量?可更改静态文件的存储路径
-        //publicPath: '/name.html',
+        //实际webpack-dev-sever 打包Js 访问的位置
+        publicPath: '/dist',
         //filename: '[name].[hash:5].js' hash 表示对文件进行hash化
-        filename: '[name].js'
+        filename: '[name].[hash:5].js'
     },
     //定义解析模块时路径的配置
     resolve: {
+        //require时省略参数的扩展名
         extensions: ['.js', '.vue', '.json'],
         //创建别名
         alias: {
             'src': path.resolve(__dirname, '../src'),
-            'assets': path.resolve(__dirname, '../src/assets'),
+            'assets': path.resolve(__dirname, '/src/assets'),
             'components': path.resolve(__dirname, '../src/components'),
             //引入vue.common js
             'vue$': 'vue/dist/vue.common.js'
@@ -54,6 +55,13 @@ module.exports = {
                 use: ['babel-loader'],
                 exclude: '/node_modules/'
             },
+            // {
+            //     test: /\.(png)|(jpg)$/,
+            //     use: ['file-loader'],
+            //     options: {
+            //         name: '[name].[ext]?[hash]'
+            //     }
+            // }
 
         ]
     },
@@ -61,7 +69,7 @@ module.exports = {
         //有可能因为webpack版本不兼容导致缺失问题
         new HtmlWebpackPlugin({
             inject: true,
-            title: 'this is about title',
+            title: '关于我们',
             //加上一个hash值,防缓存
             hash: true,
             chunks: ['about', 'common'],
@@ -72,7 +80,7 @@ module.exports = {
         }),
         new HtmlWebpackPlugin({
             inject: true,
-            title: 'this is index title',
+            title: '首页',
             //加上一个hash值,防缓存
             hash: true,
             chunks: ['index', 'common'],
