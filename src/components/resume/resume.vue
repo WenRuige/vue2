@@ -6,7 +6,7 @@
          <!--<img class="logo" src="../img/cool.png">-->
 
             <!--extract-text-webpack-plugin-->
-                        <button @click="run">运行哈</button>
+                        <button @click="run">运行哈哈啊啊实打实大</button>
 
 
         </div>

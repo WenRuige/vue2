@@ -23,7 +23,7 @@ module.exports = {
         //实际webpack-dev-sever 打包Js 访问的位置
         publicPath: '/dist',
         //filename: '[name].[hash:5].js' hash 表示对文件进行hash化
-        filename: '[name].[hash:5].js'
+        filename: '[name].js'
     },
     //定义解析模块时路径的配置
     resolve: {

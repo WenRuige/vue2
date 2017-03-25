@@ -1,14 +1,14 @@
 <template>
     <div><!--将当前布局分成三部分-->
-    <resume></resume>
+    <todo></todo>
     </div>
 </template>
 
 <script>
-import resume from '../../components/resume/resume'
+import todo from '../../components/todo/todo'
 export default {
 	components: {
-        resume
+        todo
     }
 }
 </script>
