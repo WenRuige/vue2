@@ -20,6 +20,9 @@
             <li v-for="item in object ">
                 <span class="task" style="text-decoration:line-through;">{{item.text}}</span>
             </li>
+            <el-button>默认按钮</el-button>
+            <el-button type="primary">主要按钮</el-button>
+            <el-button type="text">文字按钮</el-button>
         </div>
     </div>
 </template>

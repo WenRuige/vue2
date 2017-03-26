@@ -47,21 +47,25 @@ module.exports = {
                 use: ['vue-loader']
             },
             {
-                test: /\.css$/,
-                use: ['css-loader'],
-            },
-            {
                 test: /\.js/,
                 use: ['babel-loader'],
                 exclude: '/node_modules/'
             },
-            // {
-            //     test: /\.(png)|(jpg)$/,
-            //     use: ['file-loader'],
-            //     options: {
-            //         name: '[name].[ext]?[hash]'
-            //     }
-            // }
+            {
+                test: /\.css$/,
+                loader: 'style-loader!css-loader'
+            },
+            {
+                test: /\.(eot|svg|ttf|woff|woff2)(\?\S*)?$/,
+                loader: 'file-loader'
+            },
+            {
+                test: /\.(png|jpe?g|gif|svg)(\?\S*)?$/,
+                loader: 'file-loader',
+                query: {
+                    name: '[name].[ext]?[hash]'
+                }
+            }
 
         ]
     },
@@ -92,7 +96,7 @@ module.exports = {
         //公共类库单独打包
         new webpack.optimize.CommonsChunkPlugin('common'),
         //打包代码
-       // new webpack.optimize.UglifyJsPlugin(),
+        new webpack.optimize.UglifyJsPlugin(),
         //增加copyRight
         new webpack.BannerPlugin("gewenrui's webpack"),
     ]
