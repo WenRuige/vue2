@@ -96,9 +96,9 @@ module.exports = {
         //公共类库单独打包
         new webpack.optimize.CommonsChunkPlugin('common'),
         //打包代码
-        new webpack.optimize.UglifyJsPlugin(),
+        //new webpack.optimize.UglifyJsPlugin(),
         //增加copyRight
-        new webpack.BannerPlugin("gewenrui's webpack"),
+        //new webpack.BannerPlugin("gewenrui's webpack"),
     ]
 }
 

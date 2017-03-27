@@ -1,11 +1,20 @@
 <template>
+
+
     <div class="main">
+        <el-button
+                plain
+                @click="open3">
+            成功
+
+        </el-button>
         <div class="title">
             <h4>ToDoList</h4>
         </div>
         <div>
             <div class="input">
-                输入: <input type="text" class="entry" v-model="text" v-on:keyup.enter="add">
+                <!--v-on:keyup.enter="add"-->
+                <el-input type="text" class="entry" v-model="text"></el-input>
             </div>
             <!--移除全部-->
             <!--未完成任务-->
@@ -20,9 +29,7 @@
             <li v-for="item in object ">
                 <span class="task" style="text-decoration:line-through;">{{item.text}}</span>
             </li>
-            <el-button>默认按钮</el-button>
-            <el-button type="primary">主要按钮</el-button>
-            <el-button type="text">文字按钮</el-button>
+            <el-button type="primary" @click="add">主要按钮</el-button>
         </div>
     </div>
 </template>
@@ -35,9 +42,9 @@
                 items: [],
                 object: []
             }
-        },created:function(){
-           console.log(1)
-        } ,
+        }, created: function () {
+            console.log(1)
+        },
         methods: {
             add: function () {
                 if (this.text == '') {
@@ -50,6 +57,12 @@
             }, finish: function (item) {
                 this.object.push({text: item.text});
                 this.items.splice(this.items.indexOf(item), 1)
+            }, open3() {
+                this.$notify({
+                    title: '成功',
+                    message: '这是一条成功的提示消息',
+                    type: 'success'
+                });
             }
         }
     }
@@ -58,28 +71,4 @@
 </script>
 
 <style scoped>
-    .main {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        width: 200px;
-        margin-left: 10px;
-        box-shadow: 0px 1px 3px rgba(34, 25, 25, 0.2);
-    }
-    .entry{
-        margin-left: 10px;
-    }
-
-    li {
-        list-style: none;
-    }
-    .input{
-        margin-left: 5px;
-    }
-    h4{
-        margin-left: 10px;
-    }.task{
-        margin-left: 10px;
-         }
-
 </style>

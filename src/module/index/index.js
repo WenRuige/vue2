@@ -4,6 +4,7 @@ import App from './App'
 //import VueRouter from 'vue-router'
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-default/index.css'
+//Vue.component(Button.name, Button)
 Vue.use(ElementUI);
 //Vue.use(VueRouter);
 
