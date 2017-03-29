@@ -10,7 +10,7 @@
 
 <script>
 //APP.vue为入口文件进行查找的路由
-import common from '../../components/common/common'
+import common from '../../components/common/header'
 import danmu from '../../components/danmu/danmu'
 export default {
 	components: {

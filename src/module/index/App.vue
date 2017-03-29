@@ -1,15 +1,15 @@
 <template>
     <div>
         <!--将当前布局分成三部分-->
-        <todo></todo>
+        <headers></headers>
     </div>
 </template>
 
 <script>
-    import todo from '../../components/todo/todo'
+    import headers from '../../components/common/header'
     export default {
         components: {
-            todo
+            headers
         }
     }
 </script>
