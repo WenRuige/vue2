@@ -98,7 +98,7 @@ module.exports = {
         //打包代码
         //new webpack.optimize.UglifyJsPlugin(),
         //增加copyRight
-        //new webpack.BannerPlugin("gewenrui's webpack"),
+        new webpack.BannerPlugin("gewenrui's webpack"),
     ]
 }
 

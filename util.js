@@ -5,6 +5,7 @@ exports.getEntries = function (globPath) {
     /**
      * 读取src目录,并进行路径裁剪
      */
+    //默认加载组件下的所有js文件,如果有vue-router.js文件请不要放在这
     glob.sync(globPath).forEach(function (entry) {
         /**
          * path.basename 提取出用 ‘/' 隔开的path的最后一部分，除第一个参数外其余是需要过滤的字符串
