@@ -5,6 +5,7 @@
         -->
 
         <nav class="header">
+
         </nav>
 
 
@@ -14,27 +15,48 @@
 
         <!--此处一个大坑!!!! 根节点只能有一个否则 Vue会找不到根节点-->
         <el-row :gutter="20">
-            <el-col :span="3">
-                <el-menu mode="vertical" default-active="1" class="el-menu-vertical-demo">
-                    <el-menu-item-group title="后端管理系统分组">
-                        <el-menu-item index="1"><i class="el-icon-message"></i>
-                            <router-link class="nav-item" to="/todo">首页</router-link>
-                        </el-menu-item>
-                        <el-menu-item index="2"><i class="el-icon-message"></i>
-                            <router-link class="nav-item" to="/danmu">弹幕</router-link>
-                        </el-menu-item>
-                    </el-menu-item-group>
+
+
+            <el-col :span="5">
+                <el-menu default-active="2" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose">
+                    <el-submenu index="1">
+                        <template slot="title"><i class="el-icon-menu"></i>上传图片</template>
+                        <el-menu-item-group>
+                            <!--<template slot="title">分组一</template>-->
+                            <el-menu-item index="1-1">
+                                <router-link class="nav-item" to="/uploadlist">列表页</router-link>
+                            </el-menu-item>
+                            <el-menu-item index="1-2">
+                                <router-link class="nav-item" to="/uploadpic">上传图片</router-link>
+                            </el-menu-item>
+                        </el-menu-item-group>
+                        <!--<el-menu-item-group title="分组2">-->
+                        <!--<el-menu-item index="1-3">选项3</el-menu-item>-->
+                        <!--</el-menu-item-group>-->
+                        <!--<el-submenu index="1-4">-->
+                        <!--<template slot="title">选项4</template>-->
+                        <!--<el-menu-item index="1-4-1">选项1</el-menu-item>-->
+                        <!--</el-submenu>-->
+                    </el-submenu>
+                    <!--<el-menu-item index="2"><i class="el-icon-menu"></i>导航二</el-menu-item>-->
+                    <!--<el-menu-item index="3"><i class="el-icon-setting"></i>导航三</el-menu-item>-->
                 </el-menu>
             </el-col>
+            <!--<el-col :span="3">-->
+            <!--<el-menu mode="vertical" default-active="1" class="el-menu-vertical-demo">-->
+            <!--<el-menu-item-group title="后端管理系统分组">-->
+            <!--<el-menu-item index="1"><i class="el-icon-message"></i>-->
+            <!--<router-link class="nav-item" to="/uploadpic">上传图片</router-link>-->
+            <!--</el-menu-item>-->
+            <!--<el-menu-item index="2"><i class="el-icon-message"></i>-->
+            <!--<router-link class="nav-item" to="/danmu">弹幕</router-link>-->
+            <!--</el-menu-item>-->
+            <!--</el-menu-item-group>-->
+            <!--</el-menu>-->
+            <!--</el-col>-->
 
-            <el-col :span="6">
+            <el-col :span="15">
                 <router-view></router-view>
-            </el-col>
-            <el-col :span="6">
-                <div class="grid-content bg-purple"></div>
-            </el-col>
-            <el-col :span="6">
-                <div class="grid-content bg-purple"></div>
             </el-col>
         </el-row>
 
@@ -43,17 +65,16 @@
 </template>
 <style scoped>
     a:link {
-        font-size: 12px;
         color: #000000;
         text-decoration: none;
     }
+
     a:visited {
-        font-size: 12px;
         color: #000000;
         text-decoration: none;
     }
+
     a:hover {
-        font-size: 12px;
         color: #999999;
         text-decoration: underline;
     }
@@ -71,6 +92,14 @@
     export default {
         components: {
             danmu
+        },
+        methods: {
+            handleOpen(key, keyPath) {
+                console.log(key, keyPath);
+            },
+            handleClose(key, keyPath) {
+                console.log(key, keyPath);
+            }
         }
     }
 
