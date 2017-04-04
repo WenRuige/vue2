@@ -56,6 +56,7 @@
             <!--</el-col>-->
 
             <el-col :span="15">
+            <br>
                 <router-view></router-view>
             </el-col>
         </el-row>

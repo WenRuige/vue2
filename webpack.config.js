@@ -21,7 +21,7 @@ module.exports = {
     output: {
         path: __dirname + '/dist',
         //实际webpack-dev-sever 打包Js 访问的位置
-        publicPath: '/dist',
+        //publicPath: '/dist',
         //filename: '[name].[hash:5].js' hash 表示对文件进行hash化
         filename: '[name].js'
     },
